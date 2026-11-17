@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+*.pyc
+data/
+*.pdf
+*.qdf
+*.bin
+*.json.tmp
+reports/

@@ -1,0 +1,129 @@
+{
+  "metadata": {
+    "job_id": "34afb95f-d85f-4004-b72f-e5d32fea4748",
+    "timestamp_utc": "2026-11-08T07:27:51.755389+00:00",
+    "analyzer_version": "1.1.0"
+  },
+  "sample": {
+    "filename": "6ee17554545ebe2c31f1462e2758e1e16b0b5aacef1274ff6c57345b79eab1e2.pdf",
+    "sha256": "6ee17554545ebe2c31f1462e2758e1e16b0b5aacef1274ff6c57345b79eab1e2",
+    "size_bytes": 543825,
+    "pages": "6",
+    "author": "Leah Berry",
+    "creator": "Microsoft® Word 2019"
+  },
+  "executive_summary": {
+    "verdict": "SUSPICIOUS",
+    "risk_level": "MEDIUM - HIGH",
+    "badge_title": "ĐÁNG NGỜ - CẢNH BÁO BẢO MẬT",
+    "confidence": "MEDIUM",
+    "headline": "Tài liệu chứa liên kết mờ ám và kỹ thuật che giấu nội dung đáng ngờ.",
+    "plain_explanation": "Tệp PDF này tự nhận là tài liệu do 'Leah Berry' soạn thảo bằng Microsoft® Word 2019 (dung lượng 543,825 bytes, gồm 6 trang). Điểm đáng ngờ chính: Tài liệu đã cài cắm liên kết ngầm trỏ đến máy chủ ngoài không rõ nguồn gốc (https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh). Đây là dấu hiệu điển hình của thủ đoạn lừa đảo (phishing) nhằm chiếm đoạt tài khoản hoặc lừa nạn nhân tải về mã độc. Đồng thời, cấu trúc bên trong tệp chứa nhiều đoạn mã bị mã hóa che giấu bất thường (Base64/Hex/Octal) - kỹ thuật tin tặc thường dùng để 'qua mặt' các phần mềm diệt virus.",
+    "business_impact": "Nguy cơ lừa đảo chiếm đoạt tài khoản (Phishing), lộ lọt thông tin nhạy cảm hoặc bị cài cắm mã độc từ xa.",
+    "recommendations": [
+      "TUYỆT ĐỐI KHÔNG mở tài liệu hoặc nhấp vào bất kỳ đường link/nút bấm nào.",
+      "Thực hiện cách ly/xóa tệp ngay khỏi hòm thư và thiết bị người dùng.",
+      "Nếu đã nhấp vào liên kết, cần báo ngay cho bộ phận An toàn thông tin (SOC) để kiểm tra lịch sử kết nối mạng và đổi mật khẩu tài khoản."
+    ]
+  },
+  "soc_technical_attribution": {
+    "flagged_objects": [
+      {
+        "object_id": "4 0 R",
+        "role": "Tương tác / Liên kết (nested_action_type:/URI, uri_entry)",
+        "hierarchy_path": "3 0 R (/Pages) ➔ 1 0 R (/Kids[0]) ➔ 4 0 R",
+        "trigger_mechanism": "Tương tác người dùng (User Click / Annotation Link)",
+        "details": [
+          {
+            "field": "/Annots[0]/A",
+            "value": "{\"/S\": \"/URI\", \"/URI\": \"https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh\"}"
+          },
+          {
+            "field": "/Annots[0]/A/S",
+            "value": "/URI"
+          },
+          {
+            "field": "/Annots[0]/A/URI",
+            "value": "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh"
+          },
+          {
+            "field": "/Annots[1]/A",
+            "value": "{\"/S\": \"/URI\", \"/URI\": \"https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh\"}"
+          },
+          {
+            "field": "/Annots[1]/A/S",
+            "value": "/URI"
+          },
+          {
+            "field": "/Annots[1]/A/URI",
+            "value": "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh"
+          }
+        ]
+      }
+    ],
+    "iocs": {
+      "network": [
+        {
+          "type": "URL",
+          "indicator": "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh",
+          "severity": "HIGH",
+          "context": "Liên kết ngoại vi trỏ đến máy chủ ngoài (Cần chặn)"
+        },
+        {
+          "type": "URL",
+          "indicator": "http://www.apache.org/licenses/LICENSE-2.0",
+          "severity": "INFORMATIONAL",
+          "context": "Tham chiếu chuẩn / Giấy phép"
+        }
+      ],
+      "sample_sha256": "6ee17554545ebe2c31f1462e2758e1e16b0b5aacef1274ff6c57345b79eab1e2",
+      "embedded_files": []
+    },
+    "obfuscation_analysis": {
+      "techniques": [
+        {
+          "technique": "Pdf Octal Escape",
+          "count": 11,
+          "note": "Kỹ thuật che giấu payload/stream nhằm né tránh phát hiện signature"
+        },
+        {
+          "technique": "Long Base64 Candidate",
+          "count": 46,
+          "note": "Kỹ thuật che giấu payload/stream nhằm né tránh phát hiện signature"
+        },
+        {
+          "technique": "Long Hex String Candidate",
+          "count": 39,
+          "note": "Kỹ thuật che giấu payload/stream nhằm né tránh phát hiện signature"
+        }
+      ],
+      "summary": "Phát hiện tổng cộng 96 vị trí sử dụng kỹ thuật mã hóa/che giấu."
+    },
+    "mitre_attack": [
+      {
+        "tactic": "Initial Access / Execution",
+        "technique_id": "T1204.002",
+        "technique_name": "User Execution: Malicious File",
+        "evidence": "Tài liệu dụ dỗ người dùng tương tác với link/nút bấm ẩn trong trang."
+      },
+      {
+        "tactic": "Defense Evasion",
+        "technique_id": "T1027",
+        "technique_name": "Obfuscated Files or Information",
+        "evidence": "Phát hiện 3 cơ chế làm mờ chuỗi (Base64/Hex/Octal) trong stream."
+      },
+      {
+        "tactic": "Initial Access",
+        "technique_id": "T1566.002",
+        "technique_name": "Phishing: Spearphishing Link",
+        "evidence": "Chứa liên kết URL ngoại vi trỏ đến máy chủ ngoài không xác thực."
+      }
+    ],
+    "playbook_actions": [
+      "Cấu hình chặn Domain [deducationist.com] và URL đầy đủ trên hệ thống Firewall / DNS Sinkhole / Web Proxy.",
+      "Thực hiện truy vấn (Threat Hunting) mã SHA-256 [6ee17554545ebe2c31f1462e2758e1e16b0b5aacef1274ff6c57345b79eab1e2] trên EDR và SIEM để tìm kiếm máy trạm nào đã tiếp nhận tệp.",
+      "Truy soát nhật ký DNS và Proxy trong 7 ngày gần nhất để phát hiện endpoint đã bấm vào liên kết.",
+      "Tiến hành cách ly thiết bị liên quan và đưa mẫu PDF vào môi trường Sandbox động để giám sát thêm."
+    ]
+  }
+}

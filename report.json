@@ -1,0 +1,2600 @@
+{
+  "schema_version": "1.1.0",
+  "job_id": "34afb95f-d85f-4004-b72f-e5d32fea4748",
+  "created_at_utc": "2026-11-08T07:27:51.755389+00:00",
+  "sample": {
+    "original_filename": "6ee17554545ebe2c31f1462e2758e1e16b0b5aacef1274ff6c57345b79eab1e2.pdf",
+    "sha256": "6ee17554545ebe2c31f1462e2758e1e16b0b5aacef1274ff6c57345b79eab1e2",
+    "size_bytes": 543825,
+    "file_header": "%PDF-1.4\n%âãÏÓ\n1",
+    "detected_mime_type": "application/pdf"
+  },
+  "workflow": [
+    {
+      "stage": "intake_and_hash",
+      "status": "completed"
+    },
+    {
+      "stage": "structure_check_qpdf",
+      "status": "completed"
+    },
+    {
+      "stage": "metadata_extraction_exiftool",
+      "status": "completed"
+    },
+    {
+      "stage": "keyword_triage_pdfid",
+      "status": "completed"
+    },
+    {
+      "stage": "object_inventory_pdf_parser",
+      "status": "completed"
+    },
+    {
+      "stage": "qpdf_object_graph_and_reference_reconstruction",
+      "status": "completed"
+    },
+    {
+      "stage": "normalize_and_decode_supported_streams",
+      "status": "completed"
+    },
+    {
+      "stage": "javascript_beautify_and_static_deconcatenation",
+      "status": "completed"
+    },
+    {
+      "stage": "embedded_file_inventory_extract_magic_and_scan",
+      "status": "completed"
+    },
+    {
+      "stage": "static_qr_inspection",
+      "status": "disabled"
+    },
+    {
+      "stage": "signature_and_yara_scanning",
+      "status": "completed"
+    },
+    {
+      "stage": "evidence_correlation_and_verdict",
+      "status": "completed"
+    }
+  ],
+  "structure": {
+    "pdfid": {
+      "version": "PDFiD 0.2.10 /home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf",
+      "pdf_header": "%PDF-1.4",
+      "keyword_counts": {
+        "obj": 67,
+        "endobj": 67,
+        "stream": 37,
+        "endstream": 37,
+        "xref": 1,
+        "trailer": 1,
+        "startxref": 1,
+        "/Page": 6,
+        "/Encrypt": 0,
+        "/ObjStm": 0,
+        "/JS": 0,
+        "/JavaScript": 0,
+        "/AA": 0,
+        "/OpenAction": 0,
+        "/AcroForm": 0,
+        "/JBIG2Decode": 0,
+        "/RichMedia": 0,
+        "/Launch": 0,
+        "/EmbeddedFile": 0,
+        "/XFA": 0,
+        "/URI": 4
+      }
+    },
+    "pdfinfo": {
+      "Author": "Leah Berry",
+      "Creator": "Microsoft® Word 2019",
+      "Producer": "Adobe PDF Services",
+      "CreationDate": "Fri Oct 17 04:06:14 2025 +07",
+      "ModDate": "Fri Oct 17 04:06:14 2025 +07",
+      "Custom Metadata": "no",
+      "Metadata Stream": "no",
+      "Tagged": "no",
+      "UserProperties": "no",
+      "Suspects": "no",
+      "Form": "none",
+      "JavaScript": "no",
+      "Pages": "6",
+      "Encrypted": "no",
+      "Page size": "595.28 x 841.89 pts (A4)",
+      "Page rot": "0",
+      "File size": "543825 bytes",
+      "Optimized": "no",
+      "PDF version": "1.4"
+    },
+    "exiftool_metadata": [
+      {
+        "SourceFile": "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf",
+        "ExifTool:ExifToolVersion": 13.5,
+        "System:FileName": "input.pdf",
+        "System:Directory": "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru",
+        "System:FileSize": "544 kB",
+        "System:FileModifyDate": "2026:11:08 14:27:38+07:00",
+        "System:FileAccessDate": "2026:11:08 14:27:38+07:00",
+        "System:FileInodeChangeDate": "2026:11:08 14:27:38+07:00",
+        "System:FilePermissions": "-rw-------",
+        "File:FileType": "PDF",
+        "File:FileTypeExtension": "pdf",
+        "File:MIMEType": "application/pdf",
+        "PDF:PDFVersion": 1.4,
+        "PDF:Linearized": "No",
+        "PDF:PageCount": 6,
+        "PDF:Producer": "Adobe PDF Services",
+        "PDF:CreateDate": "2025:10:17 02:06:14+05:00",
+        "PDF:ModifyDate": "2025:10:17 02:06:14+05:00",
+        "PDF:Creator": "Microsoft® Word 2019",
+        "PDF:Author": "Leah Berry"
+      }
+    ],
+    "qpdf_check": {
+      "status": "completed",
+      "returncode": 0,
+      "stdout": "checking /home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf\nPDF Version: 1.4\nFile is not encrypted\nFile is not linearized\nNo syntax or stream encoding errors found; the file may still contain\nerrors that qpdf cannot detect\n",
+      "stderr": "",
+      "output_truncated": false
+    },
+    "pdf_parser_summary": {
+      "status": "completed",
+      "returncode": 0,
+      "stdout": "This program has not been tested with this version of Python (3.14.4)\nShould you encounter problems, please use Python version 3.13.9\nComment: 3\nXREF: 1\nTrailer: 1\nStartXref: 1\nIndirect object: 67\nIndirect objects with a stream: 10, 11, 12, 17, 18, 19, 24, 25, 26, 31, 32, 33, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 59, 61, 63, 65, 67\n  28: 2, 5, 8, 10, 11, 12, 15, 17, 18, 19, 22, 24, 25, 26, 29, 31, 32, 33, 36, 38, 39, 40, 57, 59, 61, 63, 65, 67\n /Catalog 1: 3\n /Font 10: 6, 7, 13, 14, 20, 21, 27, 28, 34, 35\n /FontDescriptor 5: 9, 16, 23, 30, 37\n /Page 6: 4, 58, 60, 62, 64, 66\n /Pages 1: 1\n /XObject 16: 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56\nSearch keywords:\n /URI 1: 4\n",
+      "stderr": "",
+      "output_truncated": false
+    },
+    "object_graph": {
+      "status": "completed",
+      "qpdf_json_version": 2,
+      "pdf_version": "1.4",
+      "object_count": 67,
+      "object_inventory": [
+        {
+          "object_id": "1 0 R",
+          "kind": "value",
+          "type": "/Pages",
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Count",
+            "/Kids",
+            "/Type"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "2 0 R",
+          "kind": "value",
+          "type": null,
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Author",
+            "/CreationDate",
+            "/Creator",
+            "/ModDate",
+            "/Producer"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "3 0 R",
+          "kind": "value",
+          "type": "/Catalog",
+          "subtype": null,
+          "roles": [
+            "catalog"
+          ],
+          "dictionary_keys": [
+            "/Pages",
+            "/Type"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "4 0 R",
+          "kind": "value",
+          "type": "/Page",
+          "subtype": null,
+          "roles": [
+            "nested_action_type:/URI",
+            "uri_entry"
+          ],
+          "dictionary_keys": [
+            "/Annots",
+            "/Contents",
+            "/Group",
+            "/MediaBox",
+            "/Parent",
+            "/Resources",
+            "/Type"
+          ],
+          "special_entries": [
+            {
+              "path": "/Annots[0]/A",
+              "value": {
+                "/S": "/URI",
+                "/URI": "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh"
+              }
+            },
+            {
+              "path": "/Annots[0]/A/S",
+              "value": "/URI"
+            },
+            {
+              "path": "/Annots[0]/A/URI",
+              "value": "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh"
+            },
+            {
+              "path": "/Annots[1]/A",
+              "value": {
+                "/S": "/URI",
+                "/URI": "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh"
+              }
+            },
+            {
+              "path": "/Annots[1]/A/S",
+              "value": "/URI"
+            },
+            {
+              "path": "/Annots[1]/A/URI",
+              "value": "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh"
+            },
+            {
+              "path": "/Group/S",
+              "value": "/Transparency"
+            }
+          ]
+        },
+        {
+          "object_id": "5 0 R",
+          "kind": "value",
+          "type": null,
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Font",
+            "/ProcSet",
+            "/XObject"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "6 0 R",
+          "kind": "value",
+          "type": "/Font",
+          "subtype": "/Type0",
+          "roles": [],
+          "dictionary_keys": [
+            "/BaseFont",
+            "/DescendantFonts",
+            "/Encoding",
+            "/Subtype",
+            "/ToUnicode",
+            "/Type"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "7 0 R",
+          "kind": "value",
+          "type": "/Font",
+          "subtype": "/CIDFontType2",
+          "roles": [],
+          "dictionary_keys": [
+            "/BaseFont",
+            "/CIDSystemInfo",
+            "/CIDToGIDMap",
+            "/DW",
+            "/FontDescriptor",
+            "/Subtype",
+            "/Type",
+            "/W"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "8 0 R",
+          "kind": "value",
+          "type": null,
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Ordering",
+            "/Registry",
+            "/Supplement"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "9 0 R",
+          "kind": "value",
+          "type": "/FontDescriptor",
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Ascent",
+            "/CapHeight",
+            "/Descent",
+            "/Flags",
+            "/FontBBox",
+            "/FontFile2",
+            "/FontName",
+            "/ItalicAngle",
+            "/MissingWidth",
+            "/StemV",
+            "/Type"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "10 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length",
+            "/Length1"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "11 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "12 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "13 0 R",
+          "kind": "value",
+          "type": "/Font",
+          "subtype": "/Type0",
+          "roles": [],
+          "dictionary_keys": [
+            "/BaseFont",
+            "/DescendantFonts",
+            "/Encoding",
+            "/Subtype",
+            "/ToUnicode",
+            "/Type"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "14 0 R",
+          "kind": "value",
+          "type": "/Font",
+          "subtype": "/CIDFontType2",
+          "roles": [],
+          "dictionary_keys": [
+            "/BaseFont",
+            "/CIDSystemInfo",
+            "/CIDToGIDMap",
+            "/DW",
+            "/FontDescriptor",
+            "/Subtype",
+            "/Type",
+            "/W"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "15 0 R",
+          "kind": "value",
+          "type": null,
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Ordering",
+            "/Registry",
+            "/Supplement"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "16 0 R",
+          "kind": "value",
+          "type": "/FontDescriptor",
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Ascent",
+            "/CapHeight",
+            "/Descent",
+            "/Flags",
+            "/FontBBox",
+            "/FontFile2",
+            "/FontName",
+            "/ItalicAngle",
+            "/MissingWidth",
+            "/StemV",
+            "/Type"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "17 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length",
+            "/Length1"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "18 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "19 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "20 0 R",
+          "kind": "value",
+          "type": "/Font",
+          "subtype": "/Type0",
+          "roles": [],
+          "dictionary_keys": [
+            "/BaseFont",
+            "/DescendantFonts",
+            "/Encoding",
+            "/Subtype",
+            "/ToUnicode",
+            "/Type"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "21 0 R",
+          "kind": "value",
+          "type": "/Font",
+          "subtype": "/CIDFontType2",
+          "roles": [],
+          "dictionary_keys": [
+            "/BaseFont",
+            "/CIDSystemInfo",
+            "/CIDToGIDMap",
+            "/DW",
+            "/FontDescriptor",
+            "/Subtype",
+            "/Type",
+            "/W"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "22 0 R",
+          "kind": "value",
+          "type": null,
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Ordering",
+            "/Registry",
+            "/Supplement"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "23 0 R",
+          "kind": "value",
+          "type": "/FontDescriptor",
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Ascent",
+            "/CapHeight",
+            "/Descent",
+            "/Flags",
+            "/FontBBox",
+            "/FontFile2",
+            "/FontName",
+            "/ItalicAngle",
+            "/MissingWidth",
+            "/StemV",
+            "/Type"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "24 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length",
+            "/Length1"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "25 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "26 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "27 0 R",
+          "kind": "value",
+          "type": "/Font",
+          "subtype": "/Type0",
+          "roles": [],
+          "dictionary_keys": [
+            "/BaseFont",
+            "/DescendantFonts",
+            "/Encoding",
+            "/Subtype",
+            "/ToUnicode",
+            "/Type"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "28 0 R",
+          "kind": "value",
+          "type": "/Font",
+          "subtype": "/CIDFontType2",
+          "roles": [],
+          "dictionary_keys": [
+            "/BaseFont",
+            "/CIDSystemInfo",
+            "/CIDToGIDMap",
+            "/DW",
+            "/FontDescriptor",
+            "/Subtype",
+            "/Type",
+            "/W"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "29 0 R",
+          "kind": "value",
+          "type": null,
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Ordering",
+            "/Registry",
+            "/Supplement"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "30 0 R",
+          "kind": "value",
+          "type": "/FontDescriptor",
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Ascent",
+            "/CapHeight",
+            "/Descent",
+            "/Flags",
+            "/FontBBox",
+            "/FontFile2",
+            "/FontName",
+            "/ItalicAngle",
+            "/MissingWidth",
+            "/StemV",
+            "/Type"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "31 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length",
+            "/Length1"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "32 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "33 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "34 0 R",
+          "kind": "value",
+          "type": "/Font",
+          "subtype": "/Type0",
+          "roles": [],
+          "dictionary_keys": [
+            "/BaseFont",
+            "/DescendantFonts",
+            "/Encoding",
+            "/Subtype",
+            "/ToUnicode",
+            "/Type"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "35 0 R",
+          "kind": "value",
+          "type": "/Font",
+          "subtype": "/CIDFontType2",
+          "roles": [],
+          "dictionary_keys": [
+            "/BaseFont",
+            "/CIDSystemInfo",
+            "/CIDToGIDMap",
+            "/DW",
+            "/FontDescriptor",
+            "/Subtype",
+            "/Type",
+            "/W"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "36 0 R",
+          "kind": "value",
+          "type": null,
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Ordering",
+            "/Registry",
+            "/Supplement"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "37 0 R",
+          "kind": "value",
+          "type": "/FontDescriptor",
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Ascent",
+            "/CapHeight",
+            "/Descent",
+            "/Flags",
+            "/FontBBox",
+            "/FontFile2",
+            "/FontName",
+            "/ItalicAngle",
+            "/MissingWidth",
+            "/StemV",
+            "/Type"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "38 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length",
+            "/Length1"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "39 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "40 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "41 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/SMask",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "42 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "43 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/SMask",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "44 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "45 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/SMask",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "46 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "47 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/SMask",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "48 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "49 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/SMask",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "50 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "51 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/SMask",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "52 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "53 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/SMask",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "54 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "55 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/SMask",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "56 0 R",
+          "kind": "stream",
+          "type": "/XObject",
+          "subtype": "/Image",
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/BitsPerComponent",
+            "/ColorSpace",
+            "/DecodeParms",
+            "/Filter",
+            "/Height",
+            "/Length",
+            "/Subtype",
+            "/Type",
+            "/Width"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "57 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "58 0 R",
+          "kind": "value",
+          "type": "/Page",
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Contents",
+            "/Group",
+            "/MediaBox",
+            "/Parent",
+            "/Resources",
+            "/Type"
+          ],
+          "special_entries": [
+            {
+              "path": "/Group/S",
+              "value": "/Transparency"
+            }
+          ]
+        },
+        {
+          "object_id": "59 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "60 0 R",
+          "kind": "value",
+          "type": "/Page",
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Contents",
+            "/Group",
+            "/MediaBox",
+            "/Parent",
+            "/Resources",
+            "/Type"
+          ],
+          "special_entries": [
+            {
+              "path": "/Group/S",
+              "value": "/Transparency"
+            }
+          ]
+        },
+        {
+          "object_id": "61 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "62 0 R",
+          "kind": "value",
+          "type": "/Page",
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Contents",
+            "/Group",
+            "/MediaBox",
+            "/Parent",
+            "/Resources",
+            "/Type"
+          ],
+          "special_entries": [
+            {
+              "path": "/Group/S",
+              "value": "/Transparency"
+            }
+          ]
+        },
+        {
+          "object_id": "63 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "64 0 R",
+          "kind": "value",
+          "type": "/Page",
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Contents",
+            "/Group",
+            "/MediaBox",
+            "/Parent",
+            "/Resources",
+            "/Type"
+          ],
+          "special_entries": [
+            {
+              "path": "/Group/S",
+              "value": "/Transparency"
+            }
+          ]
+        },
+        {
+          "object_id": "65 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length"
+          ],
+          "special_entries": []
+        },
+        {
+          "object_id": "66 0 R",
+          "kind": "value",
+          "type": "/Page",
+          "subtype": null,
+          "roles": [],
+          "dictionary_keys": [
+            "/Contents",
+            "/Group",
+            "/MediaBox",
+            "/Parent",
+            "/Resources",
+            "/Type"
+          ],
+          "special_entries": [
+            {
+              "path": "/Group/S",
+              "value": "/Transparency"
+            }
+          ]
+        },
+        {
+          "object_id": "67 0 R",
+          "kind": "stream",
+          "type": null,
+          "subtype": null,
+          "roles": [
+            "stream_object"
+          ],
+          "dictionary_keys": [
+            "/Filter",
+            "/Length"
+          ],
+          "special_entries": []
+        }
+      ],
+      "reference_edges": [
+        {
+          "from_object": "1 0 R",
+          "relation": "/Kids[0]",
+          "to_object": "4 0 R"
+        },
+        {
+          "from_object": "1 0 R",
+          "relation": "/Kids[1]",
+          "to_object": "58 0 R"
+        },
+        {
+          "from_object": "1 0 R",
+          "relation": "/Kids[2]",
+          "to_object": "60 0 R"
+        },
+        {
+          "from_object": "1 0 R",
+          "relation": "/Kids[3]",
+          "to_object": "62 0 R"
+        },
+        {
+          "from_object": "1 0 R",
+          "relation": "/Kids[4]",
+          "to_object": "64 0 R"
+        },
+        {
+          "from_object": "1 0 R",
+          "relation": "/Kids[5]",
+          "to_object": "66 0 R"
+        },
+        {
+          "from_object": "3 0 R",
+          "relation": "/Pages",
+          "to_object": "1 0 R"
+        },
+        {
+          "from_object": "4 0 R",
+          "relation": "/Contents",
+          "to_object": "57 0 R"
+        },
+        {
+          "from_object": "4 0 R",
+          "relation": "/Parent",
+          "to_object": "1 0 R"
+        },
+        {
+          "from_object": "4 0 R",
+          "relation": "/Resources",
+          "to_object": "5 0 R"
+        },
+        {
+          "from_object": "5 0 R",
+          "relation": "/Font/F1",
+          "to_object": "6 0 R"
+        },
+        {
+          "from_object": "5 0 R",
+          "relation": "/Font/F2",
+          "to_object": "13 0 R"
+        },
+        {
+          "from_object": "5 0 R",
+          "relation": "/Font/F3",
+          "to_object": "20 0 R"
+        },
+        {
+          "from_object": "5 0 R",
+          "relation": "/Font/F4",
+          "to_object": "27 0 R"
+        },
+        {
+          "from_object": "5 0 R",
+          "relation": "/Font/F5",
+          "to_object": "34 0 R"
+        },
+        {
+          "from_object": "5 0 R",
+          "relation": "/XObject/I1",
+          "to_object": "41 0 R"
+        },
+        {
+          "from_object": "5 0 R",
+          "relation": "/XObject/I2",
+          "to_object": "43 0 R"
+        },
+        {
+          "from_object": "5 0 R",
+          "relation": "/XObject/I3",
+          "to_object": "45 0 R"
+        },
+        {
+          "from_object": "5 0 R",
+          "relation": "/XObject/I4",
+          "to_object": "47 0 R"
+        },
+        {
+          "from_object": "5 0 R",
+          "relation": "/XObject/I5",
+          "to_object": "49 0 R"
+        },
+        {
+          "from_object": "5 0 R",
+          "relation": "/XObject/I6",
+          "to_object": "51 0 R"
+        },
+        {
+          "from_object": "5 0 R",
+          "relation": "/XObject/I7",
+          "to_object": "53 0 R"
+        },
+        {
+          "from_object": "5 0 R",
+          "relation": "/XObject/I8",
+          "to_object": "55 0 R"
+        },
+        {
+          "from_object": "6 0 R",
+          "relation": "/DescendantFonts[0]",
+          "to_object": "7 0 R"
+        },
+        {
+          "from_object": "6 0 R",
+          "relation": "/ToUnicode",
+          "to_object": "12 0 R"
+        },
+        {
+          "from_object": "7 0 R",
+          "relation": "/CIDSystemInfo",
+          "to_object": "8 0 R"
+        },
+        {
+          "from_object": "7 0 R",
+          "relation": "/CIDToGIDMap",
+          "to_object": "11 0 R"
+        },
+        {
+          "from_object": "7 0 R",
+          "relation": "/FontDescriptor",
+          "to_object": "9 0 R"
+        },
+        {
+          "from_object": "9 0 R",
+          "relation": "/FontFile2",
+          "to_object": "10 0 R"
+        },
+        {
+          "from_object": "13 0 R",
+          "relation": "/DescendantFonts[0]",
+          "to_object": "14 0 R"
+        },
+        {
+          "from_object": "13 0 R",
+          "relation": "/ToUnicode",
+          "to_object": "19 0 R"
+        },
+        {
+          "from_object": "14 0 R",
+          "relation": "/CIDSystemInfo",
+          "to_object": "15 0 R"
+        },
+        {
+          "from_object": "14 0 R",
+          "relation": "/CIDToGIDMap",
+          "to_object": "18 0 R"
+        },
+        {
+          "from_object": "14 0 R",
+          "relation": "/FontDescriptor",
+          "to_object": "16 0 R"
+        },
+        {
+          "from_object": "16 0 R",
+          "relation": "/FontFile2",
+          "to_object": "17 0 R"
+        },
+        {
+          "from_object": "20 0 R",
+          "relation": "/DescendantFonts[0]",
+          "to_object": "21 0 R"
+        },
+        {
+          "from_object": "20 0 R",
+          "relation": "/ToUnicode",
+          "to_object": "26 0 R"
+        },
+        {
+          "from_object": "21 0 R",
+          "relation": "/CIDSystemInfo",
+          "to_object": "22 0 R"
+        },
+        {
+          "from_object": "21 0 R",
+          "relation": "/CIDToGIDMap",
+          "to_object": "25 0 R"
+        },
+        {
+          "from_object": "21 0 R",
+          "relation": "/FontDescriptor",
+          "to_object": "23 0 R"
+        },
+        {
+          "from_object": "23 0 R",
+          "relation": "/FontFile2",
+          "to_object": "24 0 R"
+        },
+        {
+          "from_object": "27 0 R",
+          "relation": "/DescendantFonts[0]",
+          "to_object": "28 0 R"
+        },
+        {
+          "from_object": "27 0 R",
+          "relation": "/ToUnicode",
+          "to_object": "33 0 R"
+        },
+        {
+          "from_object": "28 0 R",
+          "relation": "/CIDSystemInfo",
+          "to_object": "29 0 R"
+        },
+        {
+          "from_object": "28 0 R",
+          "relation": "/CIDToGIDMap",
+          "to_object": "32 0 R"
+        },
+        {
+          "from_object": "28 0 R",
+          "relation": "/FontDescriptor",
+          "to_object": "30 0 R"
+        },
+        {
+          "from_object": "30 0 R",
+          "relation": "/FontFile2",
+          "to_object": "31 0 R"
+        },
+        {
+          "from_object": "34 0 R",
+          "relation": "/DescendantFonts[0]",
+          "to_object": "35 0 R"
+        },
+        {
+          "from_object": "34 0 R",
+          "relation": "/ToUnicode",
+          "to_object": "40 0 R"
+        },
+        {
+          "from_object": "35 0 R",
+          "relation": "/CIDSystemInfo",
+          "to_object": "36 0 R"
+        },
+        {
+          "from_object": "35 0 R",
+          "relation": "/CIDToGIDMap",
+          "to_object": "39 0 R"
+        },
+        {
+          "from_object": "35 0 R",
+          "relation": "/FontDescriptor",
+          "to_object": "37 0 R"
+        },
+        {
+          "from_object": "37 0 R",
+          "relation": "/FontFile2",
+          "to_object": "38 0 R"
+        },
+        {
+          "from_object": "41 0 R",
+          "relation": "/SMask",
+          "to_object": "42 0 R"
+        },
+        {
+          "from_object": "43 0 R",
+          "relation": "/SMask",
+          "to_object": "44 0 R"
+        },
+        {
+          "from_object": "45 0 R",
+          "relation": "/SMask",
+          "to_object": "46 0 R"
+        },
+        {
+          "from_object": "47 0 R",
+          "relation": "/SMask",
+          "to_object": "48 0 R"
+        },
+        {
+          "from_object": "49 0 R",
+          "relation": "/SMask",
+          "to_object": "50 0 R"
+        },
+        {
+          "from_object": "51 0 R",
+          "relation": "/SMask",
+          "to_object": "52 0 R"
+        },
+        {
+          "from_object": "53 0 R",
+          "relation": "/SMask",
+          "to_object": "54 0 R"
+        },
+        {
+          "from_object": "55 0 R",
+          "relation": "/SMask",
+          "to_object": "56 0 R"
+        },
+        {
+          "from_object": "58 0 R",
+          "relation": "/Contents",
+          "to_object": "59 0 R"
+        },
+        {
+          "from_object": "58 0 R",
+          "relation": "/Parent",
+          "to_object": "1 0 R"
+        },
+        {
+          "from_object": "58 0 R",
+          "relation": "/Resources",
+          "to_object": "5 0 R"
+        },
+        {
+          "from_object": "60 0 R",
+          "relation": "/Contents",
+          "to_object": "61 0 R"
+        },
+        {
+          "from_object": "60 0 R",
+          "relation": "/Parent",
+          "to_object": "1 0 R"
+        },
+        {
+          "from_object": "60 0 R",
+          "relation": "/Resources",
+          "to_object": "5 0 R"
+        },
+        {
+          "from_object": "62 0 R",
+          "relation": "/Contents",
+          "to_object": "63 0 R"
+        },
+        {
+          "from_object": "62 0 R",
+          "relation": "/Parent",
+          "to_object": "1 0 R"
+        },
+        {
+          "from_object": "62 0 R",
+          "relation": "/Resources",
+          "to_object": "5 0 R"
+        },
+        {
+          "from_object": "64 0 R",
+          "relation": "/Contents",
+          "to_object": "65 0 R"
+        },
+        {
+          "from_object": "64 0 R",
+          "relation": "/Parent",
+          "to_object": "1 0 R"
+        },
+        {
+          "from_object": "64 0 R",
+          "relation": "/Resources",
+          "to_object": "5 0 R"
+        },
+        {
+          "from_object": "66 0 R",
+          "relation": "/Contents",
+          "to_object": "67 0 R"
+        },
+        {
+          "from_object": "66 0 R",
+          "relation": "/Parent",
+          "to_object": "1 0 R"
+        },
+        {
+          "from_object": "66 0 R",
+          "relation": "/Resources",
+          "to_object": "5 0 R"
+        }
+      ],
+      "root_object_id": "3 0 R",
+      "behavior_chains": [
+        {
+          "target_object": "4 0 R",
+          "target_roles": [
+            "nested_action_type:/URI",
+            "uri_entry"
+          ],
+          "reachable_from_catalog": true,
+          "path_from_catalog": [
+            {
+              "from_object": "3 0 R",
+              "relation": "/Pages",
+              "to_object": "1 0 R"
+            },
+            {
+              "from_object": "1 0 R",
+              "relation": "/Kids[0]",
+              "to_object": "4 0 R"
+            }
+          ],
+          "local_special_entries": [
+            {
+              "path": "/Annots[0]/A",
+              "value": {
+                "/S": "/URI",
+                "/URI": "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh"
+              }
+            },
+            {
+              "path": "/Annots[0]/A/S",
+              "value": "/URI"
+            },
+            {
+              "path": "/Annots[0]/A/URI",
+              "value": "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh"
+            },
+            {
+              "path": "/Annots[1]/A",
+              "value": {
+                "/S": "/URI",
+                "/URI": "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh"
+              }
+            },
+            {
+              "path": "/Annots[1]/A/S",
+              "value": "/URI"
+            },
+            {
+              "path": "/Annots[1]/A/URI",
+              "value": "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh"
+            },
+            {
+              "path": "/Group/S",
+              "value": "/Transparency"
+            }
+          ]
+        }
+      ],
+      "trigger_to_javascript_chains": [],
+      "direct_uri_values": [
+        {
+          "source_object": "4 0 R",
+          "path": "/Annots[0]/A/URI",
+          "url": "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh"
+        },
+        {
+          "source_object": "4 0 R",
+          "path": "/Annots[1]/A/URI",
+          "url": "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh"
+        }
+      ],
+      "truncated": false,
+      "note": "Reference paths are reconstructed from qpdf JSON object references. They describe static structure, not proof that the runtime behavior occurs.",
+      "json_file_size_bytes": 38968
+    }
+  },
+  "payload_analysis": {
+    "status": "completed",
+    "qdf_size_bytes": 10282862,
+    "pdf_key_occurrences_in_normalized_data": {
+      "/OpenAction": 0,
+      "/AA": 0,
+      "/JS": 0,
+      "/JavaScript": 0,
+      "/Launch": 0,
+      "/URI": 4,
+      "/EmbeddedFile": 0,
+      "/EmbeddedFiles": 0,
+      "/ObjStm": 0,
+      "/AcroForm": 0,
+      "/XFA": 0,
+      "/RichMedia": 0,
+      "/GoToR": 0,
+      "/SubmitForm": 0,
+      "/ImportData": 0,
+      "/Encrypt": 0
+    },
+    "urls": [
+      "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh",
+      "http://www.apache.org/licenses/LICENSE-2.0"
+    ],
+    "urls_found_after_single_layer_decode": [],
+    "javascript_pattern_indicators": {},
+    "obfuscation_indicators": {
+      "pdf_octal_escape": {
+        "count": 11
+      },
+      "long_base64_candidate": {
+        "count": 46
+      },
+      "long_hex_string_candidate": {
+        "count": 39
+      }
+    },
+    "decoded_candidates": [
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 4057,
+        "decoded_length": 180,
+        "sha256": "8a41de7005613defa5b3de8738118e913c6f053ce8894d23e7e63994bd427d89",
+        "detected_magic": [],
+        "printable_preview": "MN;NNNNNMNNNNMNNNNMN;NNNNNMNNNNNNNNMNNNNMNNNNNNNNMNNMNvNNNNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 4369,
+        "decoded_length": 96,
+        "sha256": "b70cf3c4401e23e3076328046ad29bfca4685fc49e9b4fdc65fbe12f376cd0cd",
+        "detected_magic": [],
+        "printable_preview": "N<NMN6NNNNNNNMMN7NNNNMMNwNNNNNNMMN=NM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 4570,
+        "decoded_length": 162,
+        "sha256": "71b6db2808cc865b479228209352edc7a5b1633ae133d9297d8b529f2e0b2c0e",
+        "detected_magic": [],
+        "printable_preview": "NNNNNNMNNNNNNMNNNNMNNMN=MNNNNNNMNNNNNNNMNNNNNMMN<NNNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 4858,
+        "decoded_length": 111,
+        "sha256": "3c0f2e65efc90d73984e2ed3701b0ca66fb05162dd797f4a9a0feb8cd88d351e",
+        "detected_magic": [],
+        "printable_preview": "NNNMN<NMNNNNNMNNNMN<NNNNNNMNNMNvNNNNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 5078,
+        "decoded_length": 195,
+        "sha256": "6e2eee0e4023440ff59595cd907669bdcf688a81e912b8d93b1fd6ff1b1eee3f",
+        "detected_magic": [],
+        "printable_preview": "N7NNNNNMN<NNNNMN=M}NNMNNMNNNNMNNNNNNMN8NMNNNNNNMNxNNMNNNNMNNNNMN<NNNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 5410,
+        "decoded_length": 105,
+        "sha256": "b294212e5f6570c75b9815046cc8c2da1b7c5f446d162b960770d90186e9b40c",
+        "detected_magic": [],
+        "printable_preview": "NNNMNNNNMNxNNMNNNNNMN9NNNNNMNNMNvNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 5623,
+        "decoded_length": 159,
+        "sha256": "5ef4f505aa4db96c7af1bf0b0d3bf200087eb1d7fd40756986d842d4f2d91e0a",
+        "detected_magic": [],
+        "printable_preview": "NNMN=MNNNNMN<NNNNNNMNNMN;NNNNNMNNNMN{NNMNNMNyNNNMNNMNtNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 5907,
+        "decoded_length": 192,
+        "sha256": "26b7be54bb2dedf3d9c4f098d96105c5c341857d98bd1425bf1860877f7c0e73",
+        "detected_magic": [],
+        "printable_preview": "MNyNNNMNNMNNNNMNNNNNMNwNNNNMNNNNNNNMNNNMNvNNNNMNNNNNNNMNNNMN6NNNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 6236,
+        "decoded_length": 159,
+        "sha256": "94b22472a3f3b3056f0d9c794d2887298dc2965c9a6b10351b2976f13f9b9153",
+        "detected_magic": [],
+        "printable_preview": "NNNNMN5NNMNNNNNMN6NNNNNNNMMN6NNNNNNNMNNNMNNNNNMNNNMN6NNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 6521,
+        "decoded_length": 165,
+        "sha256": "2153946259c103629c33f374bb85e1115481568298d9fb5eeafbd49b32dde014",
+        "detected_magic": [],
+        "printable_preview": "NNNNMN8NNNNNNNNMNNNMNNMN<NNNNNMNNMN;NNNNNMN<NMNNNNMNwNNNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 6814,
+        "decoded_length": 153,
+        "sha256": "b29840ae7ad9a6d36703438a0bcaf02646e5a5f009a83176cf9d94bdf84db79b",
+        "detected_magic": [],
+        "printable_preview": "NNNMNNNNMNNNNNMNNNNNNNNNNMN=NMNNNNNMN6NNNMN=NMNwNNNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 7090,
+        "decoded_length": 159,
+        "sha256": "e823edce28507da843a2766267e35a5cb29b6204532b4ce015c53d296abad450",
+        "detected_magic": [],
+        "printable_preview": "NNNMNNNMN5MMN6NNNMNNNNNNMNxNNMNNNMNNMNNNNMNNNNMN6NNNNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 7374,
+        "decoded_length": 228,
+        "sha256": "22f160e9636994c0e7afeffcbacd45d43ce50507a0ec46f6e389286edee19bd3",
+        "detected_magic": [],
+        "printable_preview": "NNNMNNNNMNNNNNMN6NNNNNNMNNNNNNNMNNMNNNNNNMNwNNNNNMN9NNNNNMNNNNMNNNNNNNMNvNNNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 7910,
+        "decoded_length": 219,
+        "sha256": "33294380601d81f75990b005e1da9004aa40a2ccb062782a9e87dc7695b99927",
+        "detected_magic": [],
+        "printable_preview": "NNNNMNNNNMN;NNNNNMNNNNNNNMN7NNNNNNNNNMNNNNMNzNNNNNMNNMN;NNNNNMNNNNNNNNMMN6NNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 8275,
+        "decoded_length": 264,
+        "sha256": "adc24c86691885d1238008bec61f58c8133bdd708d3efcad34746c01770f8c35",
+        "detected_magic": [],
+        "printable_preview": "NNNNNNMNNMNNNMNNNNNNNMNxNNNNNMNNNNMN8NNNNNNNNNNMN<NNNNNNMNNNMNNNMNxNNMN<NNNNNNNNNNMMN6NNNNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 8700,
+        "decoded_length": 228,
+        "sha256": "800b6188f62612fda154f19605e927dc3009850c0c3ae3e55e8c489f5b99d1fd",
+        "detected_magic": [],
+        "printable_preview": "NNNMNNNNNNNNMNNNNNNNNNNMNxNNMNNNNMNNNNMN;NNNNNMNM}NNNNNNMNtNNNNNNMNNMNNNMN;NNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 9075,
+        "decoded_length": 189,
+        "sha256": "46047c122eaac7253b3c345de0dbf4ce68cdfd1306cac8cda4438b04f9f4f0fb",
+        "detected_magic": [],
+        "printable_preview": "NNNMNNNNMNNNNNNNNMN6NNNNNNMMN<NNNNMNNNMNxNNMNtNNNNMNNNNNM}NMNtNNNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 9400,
+        "decoded_length": 81,
+        "sha256": "eb993002a1646023fa977c09bab0651cbf31d5404869131d84b8185c777ad4e6",
+        "detected_magic": [],
+        "printable_preview": "NNNNMN;NNNNNMNNNMN5MNNMN<NNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 9582,
+        "decoded_length": 315,
+        "sha256": "ab3fdc29bdfab4ba710916c914860f1c782cbc3ad6bf1facf26b7f040221c7ee",
+        "detected_magic": [],
+        "printable_preview": "NMNNNNNNNNMNNNNNNNNNNMNNNNNMNwNNNMNNNNNNMN9NNNNNMNNNNNNMN=MNNNMNNNNMNNNMNxNNNMNNNNNNMNNMNNNNMNwNNNNNM}MNvNNNNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      },
+      {
+        "encoding": "base64",
+        "source": "qdf_stream_or_object",
+        "offset_in_qdf": 10075,
+        "decoded_length": 168,
+        "sha256": "9555efe3bf828e1215481cb50edf0d3e0c1ee1c55cb24d2dac9da08c489d18b4",
+        "detected_magic": [],
+        "printable_preview": "NNNNNNMNMN9NNNNNMMN6NNNMNNNNMNNNNNNNNNMNNNNMNNMNNNNMN<NNNNM",
+        "decoded_text_indicators": {},
+        "urls": [],
+        "execution_performed": false
+      }
+    ],
+    "mapping_note": "Offsets refer to normalized QDF bytes, not original PDF offsets or guaranteed object IDs.",
+    "execution_performed": false
+  },
+  "javascript_analysis": {
+    "status": "completed",
+    "javascript_entry_count": 0,
+    "javascript_entries_analyzed": 0,
+    "truncated": false,
+    "payload_count": 0,
+    "payloads": [],
+    "extraction_errors": [],
+    "execution_performed": false,
+    "note": "JavaScript is decoded, beautified, and inspected as data only; no JS engine, eval, or shell was invoked."
+  },
+  "embedded_files": {
+    "status": "completed",
+    "list_tool": {
+      "name": "pdfdetach_list",
+      "status": "completed",
+      "returncode": 0,
+      "stdout": "0 embedded files\n",
+      "stderr": "",
+      "output_truncated": false,
+      "command": [
+        "pdfdetach",
+        "-list",
+        "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf"
+      ]
+    },
+    "reported_count": 0,
+    "items": [],
+    "truncated": false,
+    "execution_performed": false,
+    "total_extracted_bytes": 0,
+    "clamav_infected_count": 0,
+    "yara_match_count": 0,
+    "extension_magic_mismatch_count": 0,
+    "double_extension_suspicious_count": 0
+  },
+  "qr_analysis": {
+    "status": "disabled",
+    "reason": "Set PDF_QR_SCAN_ENABLED=1 to enable bounded page rasterization and QR decoding.",
+    "urls": [],
+    "execution_performed": false
+  },
+  "findings": [
+    {
+      "severity": "informational",
+      "type": "active_content_keywords",
+      "source": "pdfid",
+      "detail": "Active-content/action-related PDF names were found; their presence alone does not prove maliciousness.",
+      "counts": {
+        "/URI": 4
+      }
+    },
+    {
+      "severity": "informational",
+      "type": "urls_found",
+      "source": "static_pdf_and_javascript_content",
+      "count": 2,
+      "urls": [
+        "https://deducationist.com/rejets_6bc7c1/zibethdisowntexter.php?Sabo=vsbejyf63fwhrvbhk4u8wy7gerh",
+        "http://www.apache.org/licenses/LICENSE-2.0"
+      ]
+    },
+    {
+      "severity": "medium",
+      "type": "possible_obfuscation",
+      "source": "normalized_pdf",
+      "patterns": {
+        "pdf_octal_escape": {
+          "count": 11
+        },
+        "long_base64_candidate": {
+          "count": 46
+        },
+        "long_hex_string_candidate": {
+          "count": 39
+        }
+      }
+    },
+    {
+      "severity": "informational",
+      "type": "statically_decoded_candidates",
+      "source": "normalized_pdf",
+      "count": 20,
+      "details": [
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 4057,
+          "decoded_length": 180,
+          "sha256": "8a41de7005613defa5b3de8738118e913c6f053ce8894d23e7e63994bd427d89",
+          "detected_magic": [],
+          "printable_preview": "MN;NNNNNMNNNNMNNNNMN;NNNNNMNNNNNNNNMNNNNMNNNNNNNNMNNMNvNNNNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 4369,
+          "decoded_length": 96,
+          "sha256": "b70cf3c4401e23e3076328046ad29bfca4685fc49e9b4fdc65fbe12f376cd0cd",
+          "detected_magic": [],
+          "printable_preview": "N<NMN6NNNNNNNMMN7NNNNMMNwNNNNNNMMN=NM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 4570,
+          "decoded_length": 162,
+          "sha256": "71b6db2808cc865b479228209352edc7a5b1633ae133d9297d8b529f2e0b2c0e",
+          "detected_magic": [],
+          "printable_preview": "NNNNNNMNNNNNNMNNNNMNNMN=MNNNNNNMNNNNNNNMNNNNNMMN<NNNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 4858,
+          "decoded_length": 111,
+          "sha256": "3c0f2e65efc90d73984e2ed3701b0ca66fb05162dd797f4a9a0feb8cd88d351e",
+          "detected_magic": [],
+          "printable_preview": "NNNMN<NMNNNNNMNNNMN<NNNNNNMNNMNvNNNNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 5078,
+          "decoded_length": 195,
+          "sha256": "6e2eee0e4023440ff59595cd907669bdcf688a81e912b8d93b1fd6ff1b1eee3f",
+          "detected_magic": [],
+          "printable_preview": "N7NNNNNMN<NNNNMN=M}NNMNNMNNNNMNNNNNNMN8NMNNNNNNMNxNNMNNNNMNNNNMN<NNNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 5410,
+          "decoded_length": 105,
+          "sha256": "b294212e5f6570c75b9815046cc8c2da1b7c5f446d162b960770d90186e9b40c",
+          "detected_magic": [],
+          "printable_preview": "NNNMNNNNMNxNNMNNNNNMN9NNNNNMNNMNvNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 5623,
+          "decoded_length": 159,
+          "sha256": "5ef4f505aa4db96c7af1bf0b0d3bf200087eb1d7fd40756986d842d4f2d91e0a",
+          "detected_magic": [],
+          "printable_preview": "NNMN=MNNNNMN<NNNNNNMNNMN;NNNNNMNNNMN{NNMNNMNyNNNMNNMNtNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 5907,
+          "decoded_length": 192,
+          "sha256": "26b7be54bb2dedf3d9c4f098d96105c5c341857d98bd1425bf1860877f7c0e73",
+          "detected_magic": [],
+          "printable_preview": "MNyNNNMNNMNNNNMNNNNNMNwNNNNMNNNNNNNMNNNMNvNNNNMNNNNNNNMNNNMN6NNNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 6236,
+          "decoded_length": 159,
+          "sha256": "94b22472a3f3b3056f0d9c794d2887298dc2965c9a6b10351b2976f13f9b9153",
+          "detected_magic": [],
+          "printable_preview": "NNNNMN5NNMNNNNNMN6NNNNNNNMMN6NNNNNNNMNNNMNNNNNMNNNMN6NNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 6521,
+          "decoded_length": 165,
+          "sha256": "2153946259c103629c33f374bb85e1115481568298d9fb5eeafbd49b32dde014",
+          "detected_magic": [],
+          "printable_preview": "NNNNMN8NNNNNNNNMNNNMNNMN<NNNNNMNNMN;NNNNNMN<NMNNNNMNwNNNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 6814,
+          "decoded_length": 153,
+          "sha256": "b29840ae7ad9a6d36703438a0bcaf02646e5a5f009a83176cf9d94bdf84db79b",
+          "detected_magic": [],
+          "printable_preview": "NNNMNNNNMNNNNNMNNNNNNNNNNMN=NMNNNNNMN6NNNMN=NMNwNNNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 7090,
+          "decoded_length": 159,
+          "sha256": "e823edce28507da843a2766267e35a5cb29b6204532b4ce015c53d296abad450",
+          "detected_magic": [],
+          "printable_preview": "NNNMNNNMN5MMN6NNNMNNNNNNMNxNNMNNNMNNMNNNNMNNNNMN6NNNNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 7374,
+          "decoded_length": 228,
+          "sha256": "22f160e9636994c0e7afeffcbacd45d43ce50507a0ec46f6e389286edee19bd3",
+          "detected_magic": [],
+          "printable_preview": "NNNMNNNNMNNNNNMN6NNNNNNMNNNNNNNMNNMNNNNNNMNwNNNNNMN9NNNNNMNNNNMNNNNNNNMNvNNNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 7910,
+          "decoded_length": 219,
+          "sha256": "33294380601d81f75990b005e1da9004aa40a2ccb062782a9e87dc7695b99927",
+          "detected_magic": [],
+          "printable_preview": "NNNNMNNNNMN;NNNNNMNNNNNNNMN7NNNNNNNNNMNNNNMNzNNNNNMNNMN;NNNNNMNNNNNNNNMMN6NNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 8275,
+          "decoded_length": 264,
+          "sha256": "adc24c86691885d1238008bec61f58c8133bdd708d3efcad34746c01770f8c35",
+          "detected_magic": [],
+          "printable_preview": "NNNNNNMNNMNNNMNNNNNNNMNxNNNNNMNNNNMN8NNNNNNNNNNMN<NNNNNNMNNNMNNNMNxNNMN<NNNNNNNNNNMMN6NNNNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 8700,
+          "decoded_length": 228,
+          "sha256": "800b6188f62612fda154f19605e927dc3009850c0c3ae3e55e8c489f5b99d1fd",
+          "detected_magic": [],
+          "printable_preview": "NNNMNNNNNNNNMNNNNNNNNNNMNxNNMNNNNMNNNNMN;NNNNNMNM}NNNNNNMNtNNNNNNMNNMNNNMN;NNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 9075,
+          "decoded_length": 189,
+          "sha256": "46047c122eaac7253b3c345de0dbf4ce68cdfd1306cac8cda4438b04f9f4f0fb",
+          "detected_magic": [],
+          "printable_preview": "NNNMNNNNMNNNNNNNNMN6NNNNNNMMN<NNNNMNNNMNxNNMNtNNNNMNNNNNM}NMNtNNNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 9400,
+          "decoded_length": 81,
+          "sha256": "eb993002a1646023fa977c09bab0651cbf31d5404869131d84b8185c777ad4e6",
+          "detected_magic": [],
+          "printable_preview": "NNNNMN;NNNNNMNNNMN5MNNMN<NNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 9582,
+          "decoded_length": 315,
+          "sha256": "ab3fdc29bdfab4ba710916c914860f1c782cbc3ad6bf1facf26b7f040221c7ee",
+          "detected_magic": [],
+          "printable_preview": "NMNNNNNNNNMNNNNNNNNNNMNNNNNMNwNNNMNNNNNNMN9NNNNNMNNNNNNMN=MNNNMNNNNMNNNMNxNNNMNNNNNNMNNMNNNNMNwNNNNNM}MNvNNNNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        },
+        {
+          "encoding": "base64",
+          "source": "qdf_stream_or_object",
+          "offset_in_qdf": 10075,
+          "decoded_length": 168,
+          "sha256": "9555efe3bf828e1215481cb50edf0d3e0c1ee1c55cb24d2dac9da08c489d18b4",
+          "detected_magic": [],
+          "printable_preview": "NNNNNNMNMN9NNNNNMMN6NNNMNNNNMNNNNNNNNNMNNNNMNNMNNNNMN<NNNNM",
+          "decoded_text_indicators": {},
+          "urls": [],
+          "execution_performed": false
+        }
+      ],
+      "detail": "Candidates were decoded in memory only; none were executed."
+    }
+  ],
+  "tools": {
+    "file_type": {
+      "name": "file_type",
+      "status": "completed",
+      "returncode": 0,
+      "stdout": "application/pdf\n",
+      "stderr": "",
+      "output_truncated": false,
+      "command": [
+        "file",
+        "--brief",
+        "--mime-type",
+        "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf"
+      ]
+    },
+    "qpdf_check": {
+      "name": "qpdf_check",
+      "status": "completed",
+      "returncode": 0,
+      "stdout": "checking /home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf\nPDF Version: 1.4\nFile is not encrypted\nFile is not linearized\nNo syntax or stream encoding errors found; the file may still contain\nerrors that qpdf cannot detect\n",
+      "stderr": "",
+      "output_truncated": false,
+      "command": [
+        "qpdf",
+        "--check",
+        "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf"
+      ]
+    },
+    "pdfinfo": {
+      "name": "pdfinfo",
+      "status": "completed",
+      "returncode": 0,
+      "stdout": "Author:          Leah Berry\nCreator:         Microsoft® Word 2019\nProducer:        Adobe PDF Services\nCreationDate:    Fri Oct 17 04:06:14 2025 +07\nModDate:         Fri Oct 17 04:06:14 2025 +07\nCustom Metadata: no\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           6\nEncrypted:       no\nPage size:       595.28 x 841.89 pts (A4)\nPage rot:        0\nFile size:       543825 bytes\nOptimized:       no\nPDF version:     1.4\n",
+      "stderr": "",
+      "output_truncated": false,
+      "command": [
+        "pdfinfo",
+        "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf"
+      ]
+    },
+    "exiftool": {
+      "name": "exiftool",
+      "status": "completed",
+      "returncode": 0,
+      "stdout": "[{\n  \"SourceFile\": \"/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf\",\n  \"ExifTool:ExifToolVersion\": 13.50,\n  \"System:FileName\": \"input.pdf\",\n  \"System:Directory\": \"/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru\",\n  \"System:FileSize\": \"544 kB\",\n  \"System:FileModifyDate\": \"2026:11:08 14:27:38+07:00\",\n  \"System:FileAccessDate\": \"2026:11:08 14:27:38+07:00\",\n  \"System:FileInodeChangeDate\": \"2026:11:08 14:27:38+07:00\",\n  \"System:FilePermissions\": \"-rw-------\",\n  \"File:FileType\": \"PDF\",\n  \"File:FileTypeExtension\": \"pdf\",\n  \"File:MIMEType\": \"application/pdf\",\n  \"PDF:PDFVersion\": 1.4,\n  \"PDF:Linearized\": \"No\",\n  \"PDF:PageCount\": 6,\n  \"PDF:Producer\": \"Adobe PDF Services\",\n  \"PDF:CreateDate\": \"2025:10:17 02:06:14+05:00\",\n  \"PDF:ModifyDate\": \"2025:10:17 02:06:14+05:00\",\n  \"PDF:Creator\": \"Microsoft® Word 2019\",\n  \"PDF:Author\": \"Leah Berry\"\n}]\n",
+      "stderr": "",
+      "output_truncated": false,
+      "command": [
+        "exiftool",
+        "-json",
+        "-G1",
+        "...",
+        "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf"
+      ]
+    },
+    "pdfid": {
+      "name": "pdfid",
+      "status": "completed",
+      "returncode": 0,
+      "stdout": "PDFiD 0.2.10 /home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf\n PDF Header: %PDF-1.4\n obj                   67\n endobj                67\n stream                37\n endstream             37\n xref                   1\n trailer                1\n startxref              1\n /Page                  6\n /Encrypt               0\n /ObjStm                0\n /JS                    0\n /JavaScript            0\n /AA                    0\n /OpenAction            0\n /AcroForm              0\n /JBIG2Decode           0\n /RichMedia             0\n /Launch                0\n /EmbeddedFile          0\n /XFA                   0\n /URI                   4\n /Colors > 2^24         0\n\n",
+      "stderr": "",
+      "output_truncated": false,
+      "command": [
+        "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/.venv/bin/python3",
+        "/home/khanh/malware_lab/DidierStevensSuite/pdfid.py",
+        "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf"
+      ]
+    },
+    "pdf_parser_stats": {
+      "name": "pdf_parser_stats",
+      "status": "completed",
+      "returncode": 0,
+      "stdout": "This program has not been tested with this version of Python (3.14.4)\nShould you encounter problems, please use Python version 3.13.9\nComment: 3\nXREF: 1\nTrailer: 1\nStartXref: 1\nIndirect object: 67\nIndirect objects with a stream: 10, 11, 12, 17, 18, 19, 24, 25, 26, 31, 32, 33, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 59, 61, 63, 65, 67\n  28: 2, 5, 8, 10, 11, 12, 15, 17, 18, 19, 22, 24, 25, 26, 29, 31, 32, 33, 36, 38, 39, 40, 57, 59, 61, 63, 65, 67\n /Catalog 1: 3\n /Font 10: 6, 7, 13, 14, 20, 21, 27, 28, 34, 35\n /FontDescriptor 5: 9, 16, 23, 30, 37\n /Page 6: 4, 58, 60, 62, 64, 66\n /Pages 1: 1\n /XObject 16: 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56\nSearch keywords:\n /URI 1: 4\n",
+      "stderr": "",
+      "output_truncated": false,
+      "command": [
+        "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/.venv/bin/python3",
+        "/home/khanh/malware_lab/DidierStevensSuite/pdf-parser.py",
+        "-a",
+        "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf"
+      ]
+    },
+    "qpdf_json": {
+      "name": "qpdf_json",
+      "status": "completed",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false,
+      "command": [
+        "qpdf",
+        "--json",
+        "--json-key=qpdf",
+        "...",
+        "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/qpdf-objects.json"
+      ]
+    },
+    "qpdf_normalize": {
+      "name": "qpdf_normalize",
+      "status": "completed",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_truncated": false,
+      "command": [
+        "qpdf",
+        "--qdf",
+        "--object-streams=disable",
+        "...",
+        "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/normalized.qdf.pdf"
+      ]
+    },
+    "pdfdetach_list": {
+      "name": "pdfdetach_list",
+      "status": "completed",
+      "returncode": 0,
+      "stdout": "0 embedded files\n",
+      "stderr": "",
+      "output_truncated": false,
+      "command": [
+        "pdfdetach",
+        "-list",
+        "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf"
+      ]
+    },
+    "clamav": {
+      "name": "clamav",
+      "status": "completed",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "LibClamAV Warning: **************************************************\nLibClamAV Warning: ***  The virus database is older than 7 days!  ***\nLibClamAV Warning: ***   Please update it as soon as possible.    ***\nLibClamAV Warning: **************************************************\nWARNING: System limit for file size is lower than engine->maxfilesize\nWARNING: System limit for file size is lower than engine->maxscansize\n",
+      "output_truncated": false,
+      "command": [
+        "clamscan",
+        "--infected",
+        "--no-summary",
+        "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/work/34afb95f-d85f-4004-b72f-e5d32fea4748-zjx1tyru/input.pdf"
+      ],
+      "infected": false
+    },
+    "yara": {
+      "name": "yara",
+      "status": "completed",
+      "matches": [],
+      "runs": [
+        {
+          "name": "yara:pdf_static_indicators.yar",
+          "status": "completed",
+          "returncode": 0,
+          "output_truncated": false
+        }
+      ]
+    }
+  },
+  "verdict": {
+    "label": "suspicious",
+    "confidence": "medium",
+    "reasons": [
+      "One or more static indicators or object relationships need analyst review; indicators alone do not prove malware execution.",
+      "QR inspection was disabled; visual QR-based phishing was not evaluated in this run."
+    ],
+    "execution_performed": false,
+    "limitations": [
+      "Static analysis only: no PDF JavaScript or extracted file was executed.",
+      "Object relationships are reconstructed from qpdf JSON; unusual or malformed PDFs may still cause incomplete parsing.",
+      "JavaScript beautification and literal concatenation are static heuristics; they do not resolve arbitrary runtime variables or encryption.",
+      "Embedded filenames are metadata only. Extracted files are written to controlled numbered paths, not the PDF-provided names.",
+      "QR scanning is optional and limited to the configured number of rendered pages; decoded URLs are never contacted.",
+      "A low_risk result means no strong indicator was found in completed checks and does not prove safety."
+    ]
+  },
+  "duration_seconds": 13.046,
+  "report_storage": {
+    "saved": true,
+    "path": "/home/khanh/pdf-analyzer-backend-v1.1/pdf-analyzer-backend/data/reports/34afb95f-d85f-4004-b72f-e5d32fea4748.json"
+  },
+  "analysis_limits": {
+    "wall_clock_seconds": 180,
+    "javascript_objects_limit": 10,
+    "javascript_stream_timeout_seconds": 8
+  }
+}

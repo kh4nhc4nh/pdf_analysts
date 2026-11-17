@@ -1,0 +1,30 @@
+# Python virtual environments & caches
+.venv/
+env/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environment & API Secrets
+.env
+*.env
+*.env.local
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.code-workspace
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary data, workdirs and raw analysis logs
+data/
+data/work/
+data/reports/
+*.tmp
+*.bin

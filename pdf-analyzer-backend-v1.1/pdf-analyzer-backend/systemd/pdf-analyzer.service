@@ -1,0 +1,21 @@
+[Unit]
+Description=PDF Static Advanced Analyzer API
+After=network.target
+
+[Service]
+Type=simple
+User=khanh
+WorkingDirectory=/home/khanh/pdf-analyzer-backend
+EnvironmentFile=/etc/pdf-analyzer/pdf-analyzer.env
+ExecStart=/home/khanh/pdf-analyzer-backend/.venv/bin/uvicorn app:app --host 0.0.0.0 --port 8000 --workers 1
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+[Install]
+WantedBy=multi-user.target
