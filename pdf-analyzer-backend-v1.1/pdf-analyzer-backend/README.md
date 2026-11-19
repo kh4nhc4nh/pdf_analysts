@@ -6,6 +6,10 @@
 ## MỤC LỤC
 1. [Giới Thiệu: Tại Sao Lại Có Dự Án Này?](#1-giới-thiệu-tại-sao-lại-có-dự-án-này)
 2. [Kiến Trúc Hệ Thống & Luồng Xử Lý (Architecture)](#2-kiến-trúc-hệ-thống--luồng-xử-lý-architecture)
+   - [2.1. Sơ đồ Luồng Phân Tích Tổng Thể (Flowchart)](#21-sơ-đồ-luồng-phân-tích-tổng-thể-flowchart)
+   - [2.2. Sơ đồ Kiến Trúc Tương Tác Giữa Các Thành Phần (Mermaid Architecture)](#22-sơ-đồ-kiến-trúc-tương-tác-giữa-các-thành-phần-mermaid-architecture)
+   - [2.3. Quy Trình Phân Tích 12 Giai Đoạn (12-Stage Pipeline)](#23-quy-trình-phân-tích-12-giai-đoạn-12-stage-pipeline)
+   - [2.4. Cấu Trúc Dự Án & Chi Tiết Chức Năng Từng Tệp Tin](#24-cấu-trúc-dự-án--chi-tiết-chức-năng-từng-tệp-tin)
 3. [Hướng Dẫn Cài Đặt & Cấu Hình Chi Tiết (Setup Guide)](#3-hướng-dẫn-cài-đặt--cấu-hình-chi-tiết-setup-guide)
    - [3.1. Thiết lập Ubuntu Server (Backend Engine)](#31-thiết-lập-ubuntu-server-backend-engine)
    - [3.2. Cấu hình Dịch vụ Nền systemd](#32-cấu-hình-dịch-vụ-nền-systemd)
@@ -17,6 +21,7 @@
    - [5.3. Cấu trúc JSON Tinh Gọn (`report_concise.json`)](#53-cấu-trúc-json-tinh-gọn-report_concisejson)
    - [5.4. Báo cáo PDF 2 Trang Hoàn Chỉnh (`report.pdf`)](#54-báo-cáo-pdf-2-trang-hoàn-chỉnh-reportpdf)
 6. [Lộ Trình Cải Tiến Trong Tương Lai (Roadmap)](#6-lộ-trình-cải-tiến-trong-tương-lai-roadmap)
+7. [Bảng Tra Cứu & Xử Lý Sự Cố Khi Gặp Lỗi (Troubleshooting Guide)](#7-bảng-tra-cứu--xử-lý-sự-cố-khi-gặp-lỗi-troubleshooting-guide)
 
 ---
 
@@ -70,6 +75,63 @@ Mối quan hệ và luồng trao đổi dữ liệu giữa Windows Client, API G
 10. **Static QR Phishing Analysis (Tùy chọn):** Rasterize an toàn tối đa 5 trang đầu, dùng `zbarimg` giải mã mã QR để phát hiện thủ đoạn Quishing.
 11. **Signature & YARA Scanning:** Quét chữ ký nhận diện mã độc bằng `clamscan` và tập luật `YARA` trên toàn bộ tệp PDF cũng như các file nhúng.
 12. **Evidence Correlation & Dual-Tier Report Generation:** Tổng hợp toàn bộ bằng chứng, tính toán nhãn kết luận (`malicious`, `suspicious`, `low_risk`, `inconclusive`), sinh `report_concise.json` và biên dịch báo cáo đồ họa `report.pdf`.
+
+### 2.4. Cấu Trúc Dự Án & Chi Tiết Chức Năng Từng Tệp Tin
+
+Dưới đây là sơ đồ cây thư mục hoàn chỉnh cùng bảng phân tích chi tiết chức năng, môi trường thực thi và cơ chế hoạt động của từng tệp tin trong toàn bộ hệ thống:
+
+```text
+SOC Analysts/
+├── README.md                                  # Tài liệu kiến trúc, hướng dẫn cài đặt & vận hành hệ thống
+├── generate_pdf_report.py                     # Script độc lập trích xuất JSON tinh gọn & render PDF (Offline/Windows)
+├── report.json                                # Dữ liệu phân tích tĩnh định dạng JSON thô (Full raw log ~78 KB)
+├── report_concise.json                        # Dữ liệu phân tích tĩnh tinh gọn 2 tầng (~6.5 KB - giảm 91.7% dữ liệu thừa)
+├── report.pdf                                 # Bản in báo cáo đồ họa 2 trang tiêu chuẩn (Executive & SOC Analyst)
+├── image/                                     # Thư mục lưu trữ hình ảnh sơ đồ kiến trúc & luồng phân tích
+└── pdf-analyzer-backend-v1.1/pdf-analyzer-backend/
+    ├── app.py                                 # REST API Server (FastAPI) tiếp nhận yêu cầu phân tích
+    ├── client_windows.py                      # CLI Client gửi mẫu PDF từ Windows sang Ubuntu và nhận báo cáo
+    ├── .env.example                           # Mẫu cấu hình các tham số môi trường và giới hạn tài nguyên
+    ├── requirements.txt                       # Thư viện Python phụ thuộc cho Backend API Server
+    ├── requirements-dev.txt                   # Thư viện phục vụ kiểm thử (pytest)
+    ├── requirements-client.txt                # Thư viện cho Client (requests)
+    ├── pdfanalyzer/                           # Gói Python lõi thực thi toàn bộ logic phân tích tĩnh
+    │   ├── __init__.py                        # Định danh package Python
+    │   ├── analyzer.py                        # Điều phối 12 giai đoạn phân tích tĩnh, tích hợp bằng chứng & Verdict
+    │   ├── runner.py                          # Subprocess wrapper an toàn (Timeout, Bounded Output, prlimit)
+    │   ├── config.py                          # Cấu hình tập trung (ngưỡng file, timeout, đường dẫn công cụ)
+    │   ├── graph_analysis.py                  # Tái dựng đồ thị đối tượng từ QPDF JSON v2, tìm chuỗi /Root ➔ /URI
+    │   ├── payload_analysis.py                # Phân tích nội dung stream QDF, decode escape, khử ghép chuỗi, regex IOCs
+    │   ├── embedded.py                        # Kiểm tra, trích xuất và xác thực Magic Bytes file đính kèm (/EmbeddedFiles)
+    │   ├── qr_analysis.py                     # Quét mã QR tĩnh trên các trang đầu chống tấn công Quishing
+    │   ├── concise_report.py                  # Bộ lọc trích xuất JSON tinh gọn đa tầng (Executive & SOC Forensics)
+    │   └── pdf_report.py                      # Bộ sinh báo cáo PDF 2 trang chuẩn mực bằng ReportLab
+    ├── rules/yara/
+    │   └── pdf_static_indicators.yar          # Luật YARA phát hiện từ khóa hành vi tĩnh (/JS, /Launch, /OpenAction,...)
+    ├── systemd/
+    │   └── pdf-analyzer.service               # File service quản lý tiến trình nền trên Ubuntu Linux qua systemd
+    ├── data/                                  # Thư mục chứa báo cáo đã lưu (reports/) và thư mục tạm (work/)
+    └── tests/                                 # Bộ unit test & integration test kiểm thử tự động
+```
+
+#### Bảng Tra Cứu Chức Năng & Cơ Chế Hoạt Động Của Từng Tệp Tin:
+
+| Tệp Tin (File Path) | Môi Trường | Chức Năng Chính | Cơ Chế Hoạt Động / Thuật Toán |
+| :--- | :--- | :--- | :--- |
+| **`app.py`** | Ubuntu Server | REST API Gateway tiếp nhận yêu cầu phân tích | Sử dụng FastAPI với xác thực `HTTPBearer`. Dùng `asyncio.Semaphore(1)` để xếp hàng tuần tự hóa các yêu cầu phân tích (tránh cạn kiệt tài nguyên máy chủ). Kiểm tra magic header `%PDF-` trong 1024 bytes đầu trước khi phân tích. |
+| **`client_windows.py`** | Windows Workstation | CLI Client tương tác với Server | Đọc file PDF trên máy local, gửi POST request kèm Token qua REST API đến máy chủ Ubuntu. Nhận JSON kết quả, tự động lưu JSON thô, JSON tinh gọn và gọi xuất báo cáo PDF 2 trang. |
+| **`generate_pdf_report.py`** | Windows / Offline | Công cụ độc lập chuyển đổi JSON sang PDF | Tự động đọc file JSON thô (`report.json`), trích xuất cấu trúc tinh gọn (`extract_concise_report`) và biên dịch ra file PDF hoàn chỉnh (`report.pdf`) bằng thư viện ReportLab mà không cần kết nối tới Server. |
+| **`pdfanalyzer/analyzer.py`** | Ubuntu Server | Nhạc trưởng điều phối (Core Orchestrator) | Quản lý toàn bộ 12 giai đoạn phân tích: tạo thư mục làm việc tạm thời `work_dir`, gọi tuần tự các công cụ phân tích, tổng hợp findings, tính toán phán quyết rủi ro (`malicious`, `suspicious`, `low_risk`, `inconclusive`), lưu báo cáo và dọn dẹp thư mục tạm. |
+| **`pdfanalyzer/runner.py`** | Ubuntu Server | Thực thi subprocess an toàn | Bọc lệnh gọi subprocess với `shell=False`. Áp dụng `prlimit --fsize` trên Linux để khống chế kích thước file output tối đa, quản lý timeout qua `ContextVar` với hạn chót toàn cục (Wall-clock Deadline). |
+| **`pdfanalyzer/config.py`** | Ubuntu Server | Quản lý cấu hình & hằng số | Thiết lập các biến môi trường: token bảo mật (`PDF_API_TOKEN`), giới hạn dung lượng tải lên (`MAX_UPLOAD_BYTES`), timeout từng công cụ (`TOOL_TIMEOUT_SECONDS`), timeout toàn cục (`MAX_ANALYSIS_SECONDS`), đường dẫn công cụ Didier Stevens (`PDFID_PATH`, `PDF_PARSER_PATH`). |
+| **`pdfanalyzer/graph_analysis.py`** | Ubuntu Server | Tái dựng đồ thị đối tượng PDF | Phân tích JSON v2 xuất từ `qpdf`, duyệt đồ thị từ Catalog `/Root`, truy vết các quan hệ tham chiếu gián tiếp (`/OpenAction`, `/AA`, `/Kids`, `/Annots`, `/URI`, `/Launch`) để tìm ra chuỗi kích hoạt chính xác đến từng Object ID. |
+| **`pdfanalyzer/payload_analysis.py`** | Ubuntu Server | Phân tích nội dung tĩnh & JavaScript | Xử lý tệp đã chuẩn hóa (QDF), giải mã chuỗi mã hóa Hex, Unicode, Octal, khử ghép chuỗi nối literal (`"c" + "m" + "d"`), làm đẹp cú pháp JS bằng `jsbeautifier`, tìm kiếm URL và dấu hiệu obfuscation mà không bao giờ thực thi mã. |
+| **`pdfanalyzer/embedded.py`** | Ubuntu Server | Phân tích tệp đính kèm | Liệt kê tệp qua `pdfdetach -list`, trích xuất vào đường dẫn an toàn được cô lập (`embedded_001.bin`), kiểm tra magic bytes thực tế để phát hiện kỹ thuật đổi đuôi kép (vd: `.pdf.exe`), sau đó quét bằng ClamAV và YARA. |
+| **`pdfanalyzer/qr_analysis.py`** | Ubuntu Server | Phát hiện tấn công Quishing | Chuyển đổi an toàn (rasterize) tối đa 5 trang đầu PDF sang ảnh PNG bằng `pdftoppm`, giải mã nội dung QR bằng `zbarimg` để trích xuất URL mà không bao giờ kết nối ra mạng ngoài. |
+| **`pdfanalyzer/concise_report.py`** | Module dùng chung | Tinh gọn hóa dữ liệu báo cáo | Lọc bỏ dữ liệu thừa, đóng gói thông tin thành 2 tầng: *Executive Summary* (cho cấp quản lý/người dùng) và *SOC Technical Attribution* (cho chuyên viên phân tích điều tra). |
+| **`pdfanalyzer/pdf_report.py`** | Module dùng chung | Trình tạo báo cáo đồ họa PDF | Sử dụng ReportLab vẽ báo cáo vector 2 trang tiêu chuẩn A4: trang 1 dành cho Executive, trang 2 dành cho SOC Analyst với bảng đối tượng vi phạm, bảng IOCs và Incident Response Checklist. |
+| **`rules/yara/pdf_static_indicators.yar`** | Ubuntu Server | Tập luật phát hiện tĩnh | Định nghĩa các mẫu chuỗi nhị phân nhận diện các đối tượng kích hoạt hành vi trong PDF (`/JavaScript`, `/JS`, `/OpenAction`, `/AA`, `/Launch`, `/EmbeddedFile`). |
+| **`systemd/pdf-analyzer.service`** | Ubuntu Server | Cấu hình dịch vụ nền Linux | Cấu hình cho phép Backend tự khởi động cùng hệ thống, tự động restart khi lỗi và kích hoạt sandbox bảo vệ hệ thống (`NoNewPrivileges=true`, `PrivateTmp=true`). |
 
 ---
 
@@ -171,8 +233,8 @@ python -m pip install requests reportlab pillow pypdf
 
 #### Bước 2: Thiết lập thông số kết nối API
 ```powershell
-# Thiết lập địa chỉ IP của Ubuntu Server VM
-$env:PDF_ANALYZER_URL = "http://192.168.140.133:8000"
+# Thiết lập địa chỉ IP của Ubuntu Server VM (thay <UBUNTU_SERVER_IP> bằng địa chỉ IP máy chủ của bạn)
+$env:PDF_ANALYZER_URL = "http://<UBUNTU_SERVER_IP>:8000"
 
 # Thiết lập Token đã tạo ở bước cấu hình Ubuntu:
 $env:PDF_API_TOKEN = "PASTE_TOKEN_FROM_UBUNTU_HERE"
@@ -393,3 +455,19 @@ Báo cáo PDF được thiết kế chuyên nghiệp trên khổ giấy A4 tiêu
    - Xây dựng dashboard đồ họa cho phép người dùng kéo thả tệp PDF cần kiểm tra, trực quan hóa cây quan hệ đối tượng bằng đồ thị tương tác D3.js và tải xuống file PDF báo cáo chỉ bằng một cú click chuột.
 6. **Mô-đun Giải Mã Mật Khẩu Tự Động (Password Brute-Forcing for Phishing PDFs):**
    - Bổ sung từ điển các mật khẩu phổ biến thường được đính kèm trong nội dung email phishing (như `1234`, `password`, `invoice`, số điện thoại) để tự động mở khóa các tệp PDF được đặt mật khẩu bảo vệ trước khi đưa vào phân tích tĩnh.
+
+---
+
+## 7. Bảng Tra Cứu & Xử Lý Sự Cố Khi Gặp Lỗi (Troubleshooting Guide)
+
+Khi hệ thống vận hành gặp sự cố, bảng dưới đây giúp xác định nguyên nhân và tệp tin cần can thiệp xử lý nhanh chóng:
+
+| Nhóm sự cố | Triệu chứng / Log lỗi | Nguyên nhân gốc rễ | Tệp tin & Vị trí cần sửa |
+| :--- | :--- | :--- | :--- |
+| **1. Lỗi Kết nối & Xác thực** | • `HTTP 401 Missing or invalid bearer token`<br>• `HTTP 503 PDF_API_TOKEN is not configured`<br>• `CONNECTION ERROR: Connection refused` | • Token cấu hình giữa Client và Server không khớp.<br>• Server chưa nạp biến môi trường `PDF_API_TOKEN`.<br>• Dịch vụ chưa khởi chạy hoặc bind nhầm `127.0.0.1` thay vì `0.0.0.0`. | • **`client_windows.py`**: Kiểm tra tham số `--token` hoặc `$env:PDF_API_TOKEN`.<br>• `/etc/pdf-analyzer/pdf-analyzer.env`: Kiểm tra token trên Ubuntu.<br>• **`app.py`** (`authorize()`): Kiểm tra logic xác thực token Bearer.<br>• **`systemd/pdf-analyzer.service`**: Kiểm tra tham số `--host 0.0.0.0 --port 8000`. |
+| **2. Lỗi Upload & Định dạng Tệp** | • `HTTP 413 File exceeds configured upload limit`<br>• `HTTP 415 No recognizable PDF header in first 1024 bytes` | • Tệp PDF upload vượt quá giới hạn 25 MB.<br>• Tệp PDF bị thiếu hoặc lệch magic header `%PDF-` trong 1024 bytes đầu (thường gặp ở kỹ thuật evasion). | • **`pdfanalyzer/config.py`**: Điều chỉnh tăng `MAX_UPLOAD_BYTES` nếu cần.<br>• **`app.py`** (dòng 60-70): Điều chỉnh độ sâu quét magic header `%PDF-`. |
+| **3. Lỗi Thiếu Công Cụ Phân Tích** | • Kết quả trả về `status: "missing_tool"`<br>• Phán quyết ra `INCONCLUSIVE` bất thường | • Server chưa cài đặt các tiện ích nhị phân: `qpdf`, `clamav`, `yara`, `poppler-utils` (`pdftoppm`), `zbar-tools` (`zbarimg`).<br>• Sai đường dẫn tới bộ công cụ `DidierStevensSuite`. | • **`pdfanalyzer/config.py`**: Cập nhật lại biến đường dẫn `PDFID_PATH`, `PDF_PARSER_PATH`.<br>• Chạy cài đặt trên Ubuntu: `sudo apt install -y file qpdf clamav yara poppler-utils zbar-tools util-linux`. |
+| **4. Lỗi Quá Thời Gian (Timeout) & Tràn Đĩa** | • Báo cáo trả về `analysis_deadline_exceeded`<br>• Tool status `timeout`<br>• `missing_resource_limiter` | • Tệp PDF quá phức tạp khiến việc quét ClamAV hoặc giải nén QDF vượt hạn mức 180s.<br>• Thiếu gói `util-linux` (`prlimit`) trên hệ điều hành Linux. | • **`pdfanalyzer/config.py`**: Tăng các ngưỡng `PDF_MAX_ANALYSIS_SECONDS`, `PDF_CLAMAV_TIMEOUT_SECONDS`, `PDF_TOOL_TIMEOUT_SECONDS`.<br>• **`pdfanalyzer/runner.py`**: Kiểm tra cơ chế `prlimit` và `_effective_timeout`. |
+| **5. Lỗi Sai Lệch Phán Quyết (Logic Verdict)** | • Tệp lành tính bị cảnh báo `SUSPICIOUS`<br>• Tệp độc hại bị xếp loại `LOW_RISK` | • Tiêu chí đánh giá hành vi quá nhạy hoặc quá lỏng.<br>• Regex nhận diện mã làm mờ (Obfuscation) hoặc JavaScript pattern bắt nhầm dữ liệu bình thường. | • **`pdfanalyzer/analyzer.py`** (hàm `analyze_pdf_bytes`, phần tính `verdict`): Điều chỉnh ngưỡng `has_suspicious`, danh sách `ACTIVE_KEYS` hoặc điều kiện `failed_required`.<br>• **`pdfanalyzer/payload_analysis.py`**: Tinh chỉnh các bộ regex `JS_PATTERNS`, `OBFUSCATION_PATTERNS`.<br>• **`rules/yara/pdf_static_indicators.yar`**: Cập nhật luật YARA. |
+| **6. Lỗi Xuất Báo Cáo PDF** | • `UnicodeEncodeError` khi render tiếng Việt<br>• Tràn trang / vỡ bố cục bảng biểu | • ReportLab không nạp được font Unicode (Arial/SegoeUI) hoặc văn bản chuỗi IOC dài không tự động xuống dòng. | • **`pdfanalyzer/pdf_report.py`** & **`generate_pdf_report.py`**: Kiểm tra hàm `_init_fonts()` trỏ đúng font chữ Unicode của hệ điều hành; đảm bảo các chuỗi dài trong Table được bọc trong `Paragraph()`. |
+| **7. Lỗi Dịch Vụ Systemd Không Chạy** | • `systemctl status pdf-analyzer` báo `failed`<br>• Tiến trình restart liên tục | • Sai đường dẫn Python virtualenv, sai username trong file service, hoặc service không có quyền đọc `/etc/pdf-analyzer/pdf-analyzer.env`. | • **`systemd/pdf-analyzer.service`**: Kiểm tra các trường `User`, `WorkingDirectory`, `ExecStart`.<br>• Sử dụng lệnh `journalctl -u pdf-analyzer -n 50 --no-pager` để kiểm tra chi tiết log lỗi khởi động. |

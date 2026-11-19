@@ -30,7 +30,7 @@ except ImportError:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Send a PDF to the Ubuntu static analysis API and save JSON/PDF reports.")
     parser.add_argument("pdf", help="Path to the local PDF file")
-    parser.add_argument("--url", default=os.environ.get("PDF_ANALYZER_URL", "http://192.168.140.133:8000"), help="Base URL of the Ubuntu API")
+    parser.add_argument("--url", default=os.environ.get("PDF_ANALYZER_URL", "http://127.0.0.1:8000"), help="Base URL of the Ubuntu API (default: http://127.0.0.1:8000 or $env:PDF_ANALYZER_URL)")
     parser.add_argument("--token", default=os.environ.get("PDF_API_TOKEN", ""), help="Bearer token; prefer env var PDF_API_TOKEN")
     parser.add_argument("--out", default="reports", help="Directory in which to save reports")
     parser.add_argument("--timeout", type=int, default=240, help="HTTP request timeout in seconds")
