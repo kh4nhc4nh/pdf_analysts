@@ -393,3 +393,6 @@ Báo cáo PDF được thiết kế chuyên nghiệp trên khổ giấy A4 tiêu
    - Xây dựng dashboard đồ họa cho phép người dùng kéo thả tệp PDF cần kiểm tra, trực quan hóa cây quan hệ đối tượng bằng đồ thị tương tác D3.js và tải xuống file PDF báo cáo chỉ bằng một cú click chuột.
 6. **Mô-đun Giải Mã Mật Khẩu Tự Động (Password Brute-Forcing for Phishing PDFs):**
    - Bổ sung từ điển các mật khẩu phổ biến thường được đính kèm trong nội dung email phishing (như `1234`, `password`, `invoice`, số điện thoại) để tự động mở khóa các tệp PDF được đặt mật khẩu bảo vệ trước khi đưa vào phân tích tĩnh.
+
+
+## Author : Hoang Gia Khanh
